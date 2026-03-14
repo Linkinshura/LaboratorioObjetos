@@ -7,12 +7,12 @@ void setup(){
 }
 
 void draw(){
-
   setearLinea();
+  ImprimirLinea();
 }
 
-void setearLinea(){
-line(mouseX, mouseY, Xprev, Yprev);
+void ImprimirLinea(){
+  line(mouseX, mouseY, Xprev, Yprev);
 
 line(width-mouseX, mouseY, width-Xprev, Yprev);
 
@@ -23,4 +23,9 @@ line(width-mouseX, height-mouseY, width-Xprev, height-Yprev);
  Xprev=mouseX;
   Yprev=mouseY;
 
+}
+
+void setearLinea(){
+stroke(0);
+strokeWeight(5);
 }
