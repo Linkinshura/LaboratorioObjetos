@@ -1,6 +1,3 @@
-int Xrev;
-int Yrev;
-
 int Xprev;
 int Yprev;
 
@@ -10,9 +7,6 @@ void setup(){
 }
 
 void draw(){
-
-Xrev = width - mouseX;
-Yrev = /*height -*/ mouseY;
 
 line(mouseX, mouseY, Xprev, Yprev);
 
