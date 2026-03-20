@@ -8,12 +8,9 @@ void setup() {
 
 void draw() {
   setearLinea();
-  if (mousePressed) {
-    CambiarColor();
-  }
-  if (keyPressed) {
-    CambiarColor2();
-  }
+
+CambiarColor();
+
   ImprimirLinea();
 }
 
@@ -31,12 +28,18 @@ void ImprimirLinea() {
 }
 
 void CambiarColor() {
-  stroke(#313CFF);
+ if (mousePressed && mouseButton == LEFT){
+ stroke(#FF0318);
+ };
+ 
+ if (mousePressed && mouseButton == RIGHT){
+ stroke(#000EFF);
+ };
+ 
+ if (mousePressed && mouseButton == CENTER){
+ stroke(#000000);
 }
 
-void CambiarColor2() {
-  stroke(#EDFF31);
-}
 
 void setearLinea() {
   stroke(#FF0505);
