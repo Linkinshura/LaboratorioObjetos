@@ -18,6 +18,11 @@ void draw() {
   strokeWeight(25);
   ellipse(0, 0, 540, 540);
   
+stroke(255, 0, 0, 40);
+strokeWeight(40);
+ellipse(0, 0, 550, 550);
+
+
   // Aro exterior
   stroke(255, 60, 0);
   strokeWeight(8);
