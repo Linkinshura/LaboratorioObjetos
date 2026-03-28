@@ -1,10 +1,17 @@
+PImage logo;
+
 void setup() {
   size(600, 800);
-  smooth();
+  logo = loadImage("logo.png");
 }
 
 void draw() {
   background(0);
+  
+  // Imagen de referencia
+  tint(255, 80);
+  image(logo, 0, 0, width, height);
+  noTint();
 
   stroke(255);
   strokeWeight(8);
@@ -26,16 +33,16 @@ void draw() {
          cx + 120, cy - 90,
          cx + 150, cy);
 
-  // Curvas interiores superiores
-  bezier(cx - 75, cy,
-         cx - 70, cy - 60,
+  // Curvas interiores
+  bezier(cx - 70, cy,
+         cx - 60, cy - 60,
          cx - 20, cy - 60,
          cx, cy);
 
   bezier(cx, cy,
          cx + 20, cy - 60,
-         cx + 70, cy - 60,
-         cx + 75, cy);
+         cx + 60, cy - 60,
+         cx + 70, cy);
 
   // Curva inferior izquierda
   bezier(cx - 150, cy,
