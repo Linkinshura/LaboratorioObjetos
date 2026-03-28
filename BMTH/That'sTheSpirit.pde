@@ -9,7 +9,7 @@ void draw() {
   strokeWeight(8);
   noFill();
 
-  // ===== PARAGUAS PARTE SUPERIOR =====
+  // Parte Superior Paraguas
   arc(width/2, 300, 320, 210, PI, TWO_PI);
 
   // Divisiones superiores
@@ -17,21 +17,21 @@ void draw() {
   arc(width/2, 300, 160, 180, PI, TWO_PI);
   arc(width/2 + 80, 300, 160, 160, PI, TWO_PI);
 
-  // ===== CURVAS INFERIORES INVERTIDAS =====
+  // Curvas invertidas
   arc(width/2 - 80, 350, 160, 120, 0, PI);
   arc(width/2, 350, 160, 120, 0, PI);
   arc(width/2 + 80, 350, 160, 120, 0, PI);
 
-  // ===== MANGO =====
+  // Mango
   line(width/2, 300, width/2, 520);
 
-  // ===== GOTAS =====
+  // gotas
   drawDrop(width/2 - 110, 420);
   drawDrop(width/2 - 30, 460);
   drawDrop(width/2 + 40, 450);
   drawDrop(width/2 + 110, 410);
 
-  // ===== TEXTOS =====
+  // texto
   fill(255);
   textAlign(CENTER);
   
@@ -42,7 +42,7 @@ void draw() {
   text("THAT'S THE SPIRIT", width/2, 640);
 }
 
-// ===== FUNCION GOTAS =====
+// Procedimiento gotas
 void drawDrop(float x, float y) {
   stroke(255);
   noFill();
