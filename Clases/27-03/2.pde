@@ -3,7 +3,7 @@
 // 2. Realizar un programa que realiza una grilla de cuadrados
 
 
-float filas=6;
+float filas=10;
 float columnas=10;
 
 void setup() {
@@ -27,7 +27,9 @@ void GenerarCuadrados() {
       float y= j * sepy;
 
       rect(x, y, sepx, sepy);
+      fill(random(255),random(255),random(255));
     }
   }
 }
+
 
