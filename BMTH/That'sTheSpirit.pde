@@ -1,6 +1,6 @@
 void setup() {
   size(600, 800);
-  smooth(8);
+  smooth();
 }
 
 void draw() {
@@ -10,12 +10,11 @@ void draw() {
   strokeWeight(8);
   noFill();
   strokeCap(ROUND);
-  strokeJoin(ROUND);
 
-  float cx = width / 2;
+  float cx = width/2;
   float cy = 300;
 
-  // Parte superior del paraguas
+  // Curva superior grande
   arc(cx, cy, 320, 210, PI, TWO_PI);
 
   // Curvas superiores internas
@@ -23,25 +22,26 @@ void draw() {
   arc(cx, cy, 160, 180, PI, TWO_PI);
   arc(cx + 80, cy, 160, 160, PI, TWO_PI);
 
-  // Curvas inferiores más planas
-  float y = 345;
-  float leftOuter = cx - 105;
-  float leftInner = cx - 38;
-  float rightInner = cx + 38;
-  float rightOuter = cx + 105;
+  // Curva inferior izquierda
+  bezier(cx - 160, cy + 40,
+         cx - 120, cy + 80,
+         cx - 40, cy + 10,
+         cx, cy + 40);
 
-  bezier(leftOuter, y, leftOuter + 12, y - 28, leftInner - 18, y - 28, leftInner, y);
-  bezier(leftInner, y, leftInner + 18, y - 28, rightInner - 18, y - 28, rightInner, y);
-  bezier(rightInner, y, rightInner + 18, y - 28, rightOuter - 12, y - 28, rightOuter, y);
+  // Curva inferior derecha
+  bezier(cx, cy + 40,
+         cx + 40, cy + 10,
+         cx + 120, cy + 80,
+         cx + 160, cy + 40);
 
   // Mango
-  line(cx, 300, cx, 520);
+  line(cx, cy, cx, cy + 220);
 
   // Gotas
-  drawDrop(cx - 110, 420);
-  drawDrop(cx - 30, 460);
-  drawDrop(cx + 40, 450);
-  drawDrop(cx + 110, 410);
+  drawDrop(cx - 110, cy + 120);
+  drawDrop(cx - 30, cy + 150);
+  drawDrop(cx + 40, cy + 140);
+  drawDrop(cx + 110, cy + 110);
 
   // Texto
   fill(255);
