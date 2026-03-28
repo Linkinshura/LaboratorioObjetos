@@ -1,91 +1,40 @@
-int cantidad = 600;
-float[] x = new float[cantidad];
-float[] y = new float[cantidad];
-float[] vel = new float[cantidad];
-
-PFont font;
-
 void setup() {
-  size(900, 900);
-  smooth();
-  
-  font = createFont("Arial", 32);
-
-  // Inicializar lluvia
-  for (int i = 0; i < cantidad; i++) {
-    x[i] = random(width);
-    y[i] = random(height);
-    vel[i] = random(6, 12);
-  }
+  size(600, 800);
 }
 
 void draw() {
   background(0);
-
-  drawRain();
-
-  // Texto arriba
-  fill(255);
-  textAlign(CENTER);
-  textFont(font);
-  text("THAT'S THE SPIRIT", width/2, 80);
-
-  // Paraguas
-  pushMatrix();
-  translate(width/2, height/2 + 80);
-  drawUmbrella();
-  popMatrix();
-
-  // Texto abajo
-  text("BRING ME THE HORIZON", width/2, height - 50);
-}
-
-void drawRain() {
+  
   stroke(255);
-  strokeWeight(1);
-
-  for (int i = 0; i < cantidad; i++) {
-    line(x[i], y[i], x[i] - 4, y[i] + 14);
-
-    x[i] -= 0.5;
-    y[i] += vel[i];
-
-    if (y[i] > height) {
-      y[i] = random(-100, 0);
-      x[i] = random(width);
-    }
-  }
-}
-
-void drawUmbrella() {
-  stroke(255);
-  strokeWeight(2);
+  strokeWeight(8);
   noFill();
 
-  // Cúpula
-  arc(0, 0, 360, 360, PI, TWO_PI);
+  // Arco grande superior
+  arc(width/2, 300, 320, 210, PI, TWO_PI);
 
-  // Bordes en picos
-  line(-180, 0, -135, 35);
-  line(-135, 35, -90, 0);
-
-  line(-90, 0, -45, 35);
-  line(-45, 35, 0, 0);
-
-  line(0, 0, 45, 35);
-  line(45, 35, 90, 0);
-
-  line(90, 0, 135, 35);
-  line(135, 35, 180, 0);
-
-  // Varillas
-  line(0, 0, 0, -170);
-  line(0, 0, -100, -140);
-  line(0, 0, 100, -140);
-
-  // Palo
-  line(0, 0, 0, 230);
+  // Curvas interiores del paraguas
+  arc(width/2 - 80, 300, 160, 160, PI, TWO_PI);
+  arc(width/2, 300, 160, 180, PI, TWO_PI);
+  arc(width/2 + 80, 300, 160, 160, PI, TWO_PI);
 
   // Mango
-  arc(35, 230, 70, 70, HALF_PI, PI);
+  line(width/2, 300, width/2, 500);
+
+  // Gotas (curvas)
+  drawDrop(width/2 - 100, 380);
+  drawDrop(width/2 - 30, 420);
+  drawDrop(width/2 + 40, 410);
+  drawDrop(width/2 + 100, 370);
+
+  // Texto
+  fill(255);
+  textAlign(CENTER);
+  textSize(20);
+  text("THAT'S THE SPIRIT", width/2, 650);
+}
+
+void drawDrop(float x, float y) {
+  stroke(255);
+  noFill();
+  arc(x, y, 20, 25, 0, PI);
 }
