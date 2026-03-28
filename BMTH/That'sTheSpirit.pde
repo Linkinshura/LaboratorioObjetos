@@ -9,7 +9,7 @@ void draw() {
   background(0);
   
   // Imagen de referencia
-  tint(255, 80);
+  tint(255, 255, 255);
   image(logo, 0, 0, width, height);
   noTint();
 
@@ -19,58 +19,14 @@ void draw() {
   strokeCap(ROUND);
 
   float cx = width/2;
-  float cy = 300;
-
-  // Curva superior izquierda
-  bezier(cx - 150, cy,
-         cx - 120, cy - 90,
-         cx - 40, cy - 90,
-         cx, cy);
-
-  // Curva superior derecha
-  bezier(cx, cy,
-         cx + 40, cy - 90,
-         cx + 120, cy - 90,
-         cx + 150, cy);
-
-  // Curvas interiores
-  bezier(cx - 70, cy,
-         cx - 60, cy - 60,
-         cx - 20, cy - 60,
-         cx, cy);
-
-  bezier(cx, cy,
-         cx + 20, cy - 60,
-         cx + 60, cy - 60,
-         cx + 70, cy);
-
-  // Curva inferior izquierda
-  bezier(cx - 150, cy,
-         cx - 120, cy + 50,
-         cx - 40, cy + 50,
-         cx, cy);
-
-  // Curva inferior derecha
-  bezier(cx, cy,
-         cx + 40, cy + 50,
-         cx + 120, cy + 50,
-         cx + 150, cy);
-
-  // Mango
-  line(cx, cy, cx, cy + 220);
-
-  // Gotas
-  drawDrop(cx - 110, cy + 120);
-  drawDrop(cx - 30, cy + 150);
-  drawDrop(cx + 40, cy + 140);
-  drawDrop(cx + 110, cy + 110);
 
   // Texto
   fill(255);
   noStroke();
   textAlign(CENTER);
   textSize(20);
-  text("THAT'S THE SPIRIT", cx, 650);
+  text("THAT'S THE SPIRIT", cx, 750);
+  text("BRING ME THE HORIZON", cx, 100);
 }
 
 void drawDrop(float x, float y) {
