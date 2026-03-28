@@ -21,6 +21,8 @@ void GenerarCuadrados() {
     float sepx= width/columnas;
     float sepy= height/filas;
 
+    noStroke();
+    
     for (int j=0; j<filas; j++) {
 
       float x = i * sepx;
@@ -31,5 +33,4 @@ void GenerarCuadrados() {
     }
   }
 }
-
 
