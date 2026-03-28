@@ -14,25 +14,40 @@ void draw() {
   float cx = width/2;
   float cy = 300;
 
-  // Curva superior grande
-  arc(cx, cy, 320, 210, PI, TWO_PI);
+  // Curva superior izquierda
+  bezier(cx - 150, cy,
+         cx - 120, cy - 90,
+         cx - 40, cy - 90,
+         cx, cy);
 
-  // Curvas superiores internas
-  arc(cx - 80, cy, 160, 160, PI, TWO_PI);
-  arc(cx, cy, 160, 180, PI, TWO_PI);
-  arc(cx + 80, cy, 160, 160, PI, TWO_PI);
+  // Curva superior derecha
+  bezier(cx, cy,
+         cx + 40, cy - 90,
+         cx + 120, cy - 90,
+         cx + 150, cy);
+
+  // Curvas interiores superiores
+  bezier(cx - 75, cy,
+         cx - 70, cy - 60,
+         cx - 20, cy - 60,
+         cx, cy);
+
+  bezier(cx, cy,
+         cx + 20, cy - 60,
+         cx + 70, cy - 60,
+         cx + 75, cy);
 
   // Curva inferior izquierda
-  bezier(cx - 160, cy + 40,
-         cx - 120, cy + 80,
-         cx - 40, cy + 10,
-         cx, cy + 40);
+  bezier(cx - 150, cy,
+         cx - 120, cy + 50,
+         cx - 40, cy + 50,
+         cx, cy);
 
   // Curva inferior derecha
-  bezier(cx, cy + 40,
-         cx + 40, cy + 10,
-         cx + 120, cy + 80,
-         cx + 160, cy + 40);
+  bezier(cx, cy,
+         cx + 40, cy + 50,
+         cx + 120, cy + 50,
+         cx + 150, cy);
 
   // Mango
   line(cx, cy, cx, cy + 220);
