@@ -12,7 +12,7 @@ void draw() {
 
     line(0, i*sepy, i*sepx, height);
     
-    
+    line(0, i*sepy, width - i*sepx, 0);
 
     line(i*sepy, 0, width, i*sepy);
 
