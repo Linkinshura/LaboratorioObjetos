@@ -21,7 +21,3 @@ void draw() {
 }
 
 
-
-/*
-Incompleto
-*/
