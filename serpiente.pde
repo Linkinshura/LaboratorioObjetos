@@ -1,90 +1,56 @@
-// Snake con control por mouse
-
 ArrayList<PVector> snake;
-PVector food;
 
 float speed = 3;
-int initialSize = 20;
-int growAmount = 10;
+int size = 12;
+
+int minLength = 15;
+int maxLength = 60;
 
 void setup() {
   size(600, 600);
+  frameRate(60);
+  
   snake = new ArrayList<PVector>();
   
-  // Posición inicial en el centro
-  for (int i = 0; i < initialSize; i++) {
+  // Longitud aleatoria
+  int length = int(random(minLength, maxLength));
+  
+  for (int i = 0; i < length; i++) {
     snake.add(new PVector(width/2, height/2));
   }
-  
-  spawnFood();
 }
 
 void draw() {
   background(0);
   
-  moveSnake();
-  checkCollision();
+  move();
   drawSnake();
-  drawFood();
 }
 
-void moveSnake() {
+void move() {
   PVector head = snake.get(0).copy();
   
-  // Dirección hacia el mouse
-  PVector dir = new PVector(mouseX - head.x, mouseY - head.y);
-  dir.normalize();
-  dir.mult(speed);
+  PVector dir = PVector.sub(new PVector(mouseX, mouseY), head);
+  
+  if (dir.mag() != 0) {
+    dir.normalize();
+    dir.mult(speed);
+  }
   
   head.add(dir);
+  
   snake.add(0, head);
   snake.remove(snake.size() - 1);
 }
 
 void drawSnake() {
-  fill(0, 255, 0);
   noStroke();
   
-  for (PVector p : snake) {
-    ellipse(p.x, p.y, 10, 10);
+  for (int i = 0; i < snake.size(); i++) {
+    float c = map(i, 0, snake.size(), 255, 50);
+    fill(0, c, 0);
+    
+    PVector p = snake.get(i);
+    ellipse(p.x, p.y, size, size);
   }
-}
-
-void drawFood() {
-  fill(255, 0, 0);
-  ellipse(food.x, food.y, 10, 10);
-}
-
-void spawnFood() {
-  food = new PVector(random(width), random(height));
-}
-
-void checkCollision() {
-  PVector head = snake.get(0);
-  
-  // Comer comida
-  if (dist(head.x, head.y, food.x, food.y) < 10) {
-    for (int i = 0; i < growAmount; i++) {
-      snake.add(snake.get(snake.size() - 1).copy());
-    }
-    spawnFood();
-  }
-  
-  // Colisión con el cuerpo
-  for (int i = 1; i < snake.size(); i++) {
-    PVector part = snake.get(i);
-    if (dist(head.x, head.y, part.x, part.y) < 5) {
-      gameOver();
-    }
-  }
-  
-  // Salirse de la pantalla
-  if (head.x < 0 || head.x > width || head.y < 0 || head.y > height) {
-    gameOver();
-  }
-}
-
-void gameOver() {
-  println("Game Over");
-  noLoop();
 }
