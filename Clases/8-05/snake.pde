@@ -34,8 +34,8 @@ SolidY[0]= cantFil/2;
 
 void draw(){
 
-MoverSolid();
 CheckPineapple();
+MoverSolid();
 Grulla();
 Pineapple();
 SolidSnake();
@@ -79,25 +79,25 @@ rect(x,y, tamCol, tamFil);
 
 void KeyPressed(){
 
-if(key=='d' || key=='D'){
+if(key=='d' || key=='D' && dx !=-1){
 dx=dx +1;
 dy=0;
 
 
 }
 
-if(key=='a' || key=='A'){
+if(key=='a' || key=='A' && dx!=1){
 dx =dx -1;
 dy=0;
 
 }
 
-if(key =='w' || key=='W'){
+if(key =='w' || key=='W' && dy!=1){
 dy=dy-1;
 dx=0;
 }
 
-if(key=='s' || key=='S'){
+if(key=='s' || key=='S' && dy!=-1){
 dy=dy+1;
 dx=0;
 
@@ -138,8 +138,14 @@ int[] SolidX = new int[cantFil*cantCol];
 int[] SolidY = new int[cantFil*cantCol];
 
 
-
 */
+
+
+for(int i=contBodieSolid-1; i>0 ;i--){
+SolidX[i]=SolidX[i-1];
+SolidY[i]=SolidY[i-1];
+
+}
 
 SolidX[0] = SolidX[0] + dy;
 SolidY[0] = SolidY[0] + dx;
