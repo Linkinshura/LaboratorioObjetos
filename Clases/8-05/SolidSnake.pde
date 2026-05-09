@@ -22,7 +22,7 @@ boolean gameOver = false;
 
 void setup() {
 
-  size(800, 800);
+  size(600, 600);
 
   tamCol = width / cantCol;
   tamFil = height / cantFil;
@@ -87,7 +87,7 @@ void Pineapple() {
   float x = mx * tamCol;
   float y = my * tamFil;
 
-  fill(255, 0, 0);
+  fill(#F50743);
   rect(x, y, tamCol, tamFil);
 
 }
@@ -127,7 +127,7 @@ void keyPressed() {
 
 void SolidSnake() {
 
-  fill(0, 255, 0);
+  fill(#26CE1B);
 
   for (int i = 0; i < contBodieSolid; i++) {
 
@@ -162,7 +162,7 @@ void CheckPineapple() {
 
     contBodieSolid++;
 
-    NuevaManzana();
+    NewPineapple();
 
   }
 
