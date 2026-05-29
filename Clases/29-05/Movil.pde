@@ -2,7 +2,7 @@ class Movil {
 
   PVector pos, vel;
 
-  int r = 2;
+  int r = 40;
 
   Movil(float x, float y) {
     pos = new PVector(x, y);
@@ -49,7 +49,7 @@ void draw() {
 }
 */
 Movil[] moviles;
-int cant = 10;
+int cant = 40;
 void setup(){
  size(800,600); 
   moviles = new Movil[cant];
@@ -59,8 +59,10 @@ void setup(){
 }
 
 void draw(){
+  println(frameRate);
   for(int i=0; i<cant;i++){
    moviles[i].mover();
    moviles[i].mostrar();
+   fill(random(0, 255));
   }
 }
