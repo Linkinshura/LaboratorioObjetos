@@ -36,7 +36,7 @@ class Movil {
   // vel = new PVector(vx, vy);
   // }
 }
-
+/*
 Movil m;
 void setup() {
   size(600, 400);
@@ -47,4 +47,20 @@ void draw() {
   m.mover();
   m.mostrar();
 }
+*/
+Movil[] moviles;
+int cant = 10;
+void setup(){
+ size(800,600); 
+  moviles = new Movil[cant];
+  for(int i=0;i<cant;i++){
+    moviles[i] = new Movil(random(width), random(height));
+  }
+}
 
+void draw(){
+  for(int i=0; i<cant;i++){
+   moviles[i].mover();
+   moviles[i].mostrar();
+  }
+}
