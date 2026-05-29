@@ -1,20 +1,21 @@
-class movil {
+class Movil {
 
   PVector pos, vel;
 
-  int r;
+  int r = 2;
 
-  movil(float x, float y) {
+  Movil(float x, float y) {
     pos = new PVector(x, y);
-    vel = new PVector(1, 1);
+    //vel = new PVector(1, 1);
+    vel = new PVector(random(-4, 4), random(-4, 4));
   }
   void mover() {
     pos.add(vel);
-    contener();
+    this.contener();
   }
 
   void mostrar() {
-    ellipse(pos.x, pos.y, R, R);
+    ellipse(pos.x, pos.y, r, r);
   }
 
   void contener() {
@@ -29,7 +30,21 @@ class movil {
   }
 
 
-  movil(float x, float y, float vx, float vy) {
-    pos = new PVector(x, y);
-    vel = new PVector(vx, vy);
-  }
+
+  //Movil(float x, float y, float vx, float vy) {
+  // pos = new PVector(x, y);
+  // vel = new PVector(vx, vy);
+  // }
+}
+
+Movil m;
+void setup() {
+  size(600, 400);
+  m = new Movil(width/2, height/2);
+}
+
+void draw() {
+  m.mover();
+  m.mostrar();
+}
+
