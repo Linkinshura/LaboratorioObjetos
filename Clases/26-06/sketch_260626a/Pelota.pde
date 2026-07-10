@@ -1,27 +1,26 @@
-class Pelota{
+class Pelota {
   PVector pos;
   PVector vel;
-  Float r= 10.0;
+  float r = 10;
   color c = color(255);
-  
-  Pelota(){
-    pos = new PVector(width/2, height/2);
-    vel = new PVector(1,1);
+
+  Pelota() {
+    pos= new PVector( width/2, height/2);
+    vel= new PVector(1, 1);
   }
-  
-  void mover(){
+
+  void mover() {
     pos.add(vel);
+    //rebotar();
   }
-  
-  void mostrar(){
+
+  void mostrar() {
     fill(c);
     circle(pos.x, pos.y, r);
   }
-  
-  void  rebotar(){
-    if(pos.y > height-r || pos.y < r){
-      vel.y = vel.y * -1;
+  void rebotar() {
+    if (pos.y > height - r || pos.y< r) {
+      vel.y=vel.y*-1;
     }
   }
-  
 }
