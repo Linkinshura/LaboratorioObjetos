@@ -6,6 +6,6 @@ p = new Pelota();
 void draw(){
 background(0);
 p.mover();
-p.rebota();
+p.rebotar();
 p.mostrar();
 }
