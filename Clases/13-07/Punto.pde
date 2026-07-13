@@ -1,40 +1,26 @@
-class Punto {
+Punto[] puntos;
+int cantidad = 10;
+float rango = 300;
 
-  float x, y;
-  float vx, vy;
+void setup() {
+  size(800, 600);
 
-  Punto() {
-    x = random(width);
-    y = random(height);
+  puntos = new Punto[cantidad];
 
-    vx = random(-2, 2);
-    vy = random(-2, 2);
+  for (int i = 0; i < cantidad; i++) {
+    puntos[i] = new Punto();
   }
+}
 
-  void mover() {
-    x += vx;
-    y += vy;
+void draw() {
+  background(255);
 
-    if (x < 0 || x > width) {
-      vx *= -1;
-    }
+  float cx = width/2;
+  float cy = height/2;
 
-    if (y < 0 || y > height) {
-      vy *= -1;
-    }
-  }
 
-  void mostrar(float cx, float cy, float rango) {
-
-    float d = dist(x, y, cx, cy);
-
-    if (d < rango) {
-      stroke(255, 150);
-      line(x, y, cx, cy);
-    }
-
-    noStroke();
-    fill(255);
-    ellipse(x, y, 6, 6);
+  for (int i = 0; i < cantidad; i++) {
+    puntos[i].mover();
+    puntos[i].mostrar(cx, cy, rango);
   }
 }
