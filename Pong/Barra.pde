@@ -1,51 +1,23 @@
-
 class Barra {
   PVector pos;
-  float velocidad = 7;
-  int tamAlto = 80;
-  int tamAncho = 15;
-  color c = color(255);
-  
-  int teclaArriba;
-  int teclaAbajo;
-  boolean moviendoArriba = false;
-  boolean moviendoAbajo = false;
+  int tamAlto = 120;
+  int tamAncho = 30;
 
-  Barra(float x, float y, int up, int down) {
+  color cNormal = color(255);
+  color cColision = color(255, 0, 0);
+
+  Barra(float x, float y) {
     pos = new PVector(x, y);
-    teclaArriba = up;
-    teclaAbajo = down;
   }
 
-  void mover() {
-    if (moviendoArriba && pos.y > 0) {
-      pos.y -= velocidad;
+  void mostrar(boolean colision) {
+    if (colision) {
+      fill(cColision);
+    } else {
+      fill(cNormal);
     }
-    if (moviendoAbajo && pos.y < height - tamAlto) {
-      pos.y += velocidad;
-    }
-  }
 
-  void mostrar() {
-    fill(c);
     noStroke();
     rect(pos.x, pos.y, tamAncho, tamAlto);
   }
-
-  void presionarTecla(int k) {
-    if (k == teclaArriba) moviendoArriba = true;
-    if (k == teclaAbajo) moviendoAbajo = true;
-  }
-
-  void soltarTecla(int k) {
-    if (k == teclaArriba) moviendoArriba = false;
-    if (k == teclaAbajo) moviendoAbajo = false;
-  }
-
-boolean ChochaConCirculo(PVector cpos, float cr){
-
-return (dist(PMC.,PMC.y, cpos, cposy) < cr);
 }
-
-}
-
