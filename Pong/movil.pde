@@ -1,8 +1,12 @@
 Pelota p;
 Barra rectangulo;
 
+PImage img;
+
 void setup() {
   size(800, 600);
+
+  img = loadImage("a.png");
 
   p = new Pelota(100, height / 2);
 
@@ -23,6 +27,8 @@ void draw() {
     rectangulo.tamAncho,
     rectangulo.tamAlto
   );
+
+image(img,mouseX,mouseY);
 
   rectangulo.mostrar(colision);
 }
