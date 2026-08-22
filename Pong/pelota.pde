@@ -1,13 +1,15 @@
 class Pelota {
   PVector pos;
   PVector vel;
+  PImage img;
 
   float r = 20;
   color c = color(255);
 
-  Pelota(float x, float y) {
+  Pelota(float x, float y, float tipo) {
     pos = new PVector(x, y);
     vel = new PVector(4, 3);
+    if(tipo == 1) img = loadImage("1.png");
   }
 
   void mover() {
@@ -26,6 +28,7 @@ class Pelota {
     fill(c);
     noStroke();
     ellipse(pos.x, pos.y, r * 2, r * 2);
+    Image(img,posX,posY);
   }
 
   boolean ChocaConRect(PVector rpos, float rw, float rh) {
