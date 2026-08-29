@@ -1,55 +1,46 @@
 class Pelota {
-  PVector pos;
-  PVector vel;
-  PImage img;
+  PVector pos, vel,
+    acel = new PVector (0, 0);
 
-  float r = 20;
-  color c = color(255);
+  float r = 10 ;
 
-  Pelota(float x, float y, float tipo) {
-    pos = new PVector(x, y);
-    vel = new PVector(4, 3);
-    if(tipo == 1) img = loadImage("1.png");
-  }
-
-  void mover() {
-    pos.add(vel);
-
-    if (pos.x - r < 0 || pos.x + r > width) {
-      vel.x *= -1;
-    }
-
-    if (pos.y - r < 0 || pos.y + r > height) {
-      vel.y *= -1;
-    }
+  Pelota(float px, float py) {
+    pos = new PVector(px, py);
+    vel = new PVector(random(10)<5?2:-2, random(10)<5?2:-2 );
+    color col= #FAEF1E;
   }
 
   void mostrar() {
-    fill(c);
     noStroke();
-    ellipse(pos.x, pos.y, r * 2, r * 2);
-    image(img,pos.x,pos.y);
+    fill(255, 255, 0);
+    ellipse(pos.x, pos.y, r, r);
   }
 
-  boolean ChocaConRect(PVector rpos, float rw, float rh) {
-
-    float cercaX = constrain(pos.x, rpos.x, rpos.x + rw);
-    float cercaY = constrain(pos.y, rpos.y, rpos.y + rh);
-
-    PVector puntoCercano = new PVector(cercaX, cercaY);
-
-    return ChocaCon(puntoCercano);
+  void mover() {
+    vel.add(acel);
+    acel.mult(0);
+    pos.add(vel);
   }
 
-  boolean ChocaCon(PVector otro) {
+  void contener() {
+    if (pos.y>height||pos.y<0 )
+      vel.y *=-1;
+  }
+  void rebotar() {
+    vel.x *=-1;
+  }
 
-    float distancia = dist(
-      pos.x,
-      pos.y,
-      otro.x,
-      otro.y
-    );
+  void separar(PVector otraPos) {
+    PVector f = otraPos.copy();
+    f.sub(pos);
+    f.normalize();
+    f.mult(-1);
+    acel.add(f);
+  }
 
-    return distancia < r;
+
+  void AgregarFuerza(PVector g) {
+    vel.add(g);
+    pos.add(vel);
   }
 }
