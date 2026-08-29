@@ -6,15 +6,17 @@ class Pelota {
 
   Pelota(float px, float py) {
     pos = new PVector(px, py);
-    vel = new PVector(random(10)<5?2:-2, random(10)<5?2:-2 );
-    color col= #FAEF1E;
+    vel = new PVector(random(1)<5?2:-2, random(1)<5?2:-2 );
   }
 
   void mostrar() {
     noStroke();
-    fill(255, 255, 0);
+    fill(#FAEF1E);
     ellipse(pos.x, pos.y, r, r);
   }
+
+
+
 
   void mover() {
     vel.add(acel);
@@ -41,6 +43,5 @@ class Pelota {
 
   void AgregarFuerza(PVector g) {
     vel.add(g);
-    pos.add(vel);
   }
 }
