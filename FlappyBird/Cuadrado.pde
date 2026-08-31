@@ -1,21 +1,21 @@
-class Cuadrado {
+class Cuadrado { 
   PVector pos;
-  int tamAlto = 120;
-  int tamAncho = 30;
+  float ancho;
+  float alto;
+  float velocidadX = -3; 
 
-  color cNormal = color(#42F51B);
-
-  Cuadrado(float x, float y) {
+  Cuadrado(float x, float y, float w, float h) {
     pos = new PVector(x, y);
-  }
-
-  void mostrar() {
-    fill(cNormal);
-
-    noStroke();
-    rect(pos.x, pos.y, tamAncho, tamAlto);
+    ancho = w;
+    alto = h;
   }
 
   void mover() {
+    pos.x += velocidadX;
+  }
+
+  void mostrar() {
+    fill(0, 255, 0); 
+    rect(pos.x, pos.y, ancho, alto);
   }
 }
